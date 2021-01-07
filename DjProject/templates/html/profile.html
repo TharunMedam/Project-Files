@@ -1,0 +1,45 @@
+{% extends 'html/base.html' %}
+{% block title %} Profile {% endblock %}
+{% load static %}
+{% block content %}
+<br>
+<div class="row">
+    <div class="container">
+    {% if messages %}
+    {% for k in messages %}
+    <div class="alert alert-{{k.tags}} alert-dismissible mt-3">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>{{k}}
+    </div> 
+    {% endfor %}
+    {% endif %}
+    <div class="row mt-4">
+        <div class="card col-md-3 col-sm-3 mx-2 my-2">
+            <h2 class="bg-info text-center mx-2 my-2 p-2 border rounded">Profile</h2>
+            <div class="card-body">
+                <img src="{{user.exfd.impf.url}}" height="200px" width="100%"/>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="card card-body">
+            <h5>USER PROFILE</h5>
+            <hr>
+                <div class="label"><p>First Name   :   {{user.first_name}}</p>
+                </div>
+                <div class="label"><p>Last Name   :   {{user.last_name}}</p>
+                </div>
+                <div class="label"><p>Name   :   {{user.username}}</p>
+                </div>
+                <div class="label"><p>Gmail   :   {{user.email}}</p>
+                </div>
+                <div class="label"><p>Age   :   {{user.exfd.age}}</p>
+                </div>
+                <div class="label"><p>Gender   :   {{user.exfd.gender}}</p>
+                </div>
+            </div>
+            <div class="card card-footer">
+            <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'upfe' %}">Update Profile</a>
+            </div>
+        </div>    
+    </div>
+</div>
+{% endblock %}
